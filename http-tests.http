@@ -1,0 +1,8 @@
+POST https://prod-33.westeurope.logic.azure.com:443/workflows/100eb921ac764d26ab0f76ea52c8cce6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=EJhgL-wBnJJywgo-rMDstlnDQ_Mm86ExG7rAj0TamjM HTTP/1.1
+Content-Type: application/json
+
+{
+    "productId": "75542e38-563f-436f-adeb-f426f1dabb5c"
+}
+
+###
