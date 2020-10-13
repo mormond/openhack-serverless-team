@@ -5,8 +5,7 @@ import logging
 
 import azure.functions as func
 
-def 
-main(req: func.HttpRequest) -> func.HttpResponse:
+def main(req: func.HttpRequest) -> func.HttpResponse:
     '''high level support for doing this and that.'''
     logging.info('Python HTTP trigger function processed a request.')
 
