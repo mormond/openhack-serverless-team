@@ -36,7 +36,7 @@ jobs:
           # Name of the Azure Function App
           app-name: meoserverlessopenhack
           # Path to package or folder. *.zip or a folder to deploy
-          package: .
+          package: ./http_trigger_1
           # Function app slot to be deploy to
           # slot-name: # optional
           # Publish profile (*.publishsettings) file contents with web deploy secrets
