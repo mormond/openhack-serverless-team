@@ -12,6 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
@@ -27,16 +28,19 @@ jobs:
         pylint http_trigger_1
 
   deploy:
+    needs: [build]
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
+            
       - name: Azure Functions Action
         uses: Azure/functions-action@v1.1.5
         with:
           # Name of the Azure Function App
           app-name: meoserverlessopenhack
           # Path to package or folder. *.zip or a folder to deploy
-          package: ./http_trigger_1
+          package: .
           # Function app slot to be deploy to
           # slot-name: # optional
           # Publish profile (*.publishsettings) file contents with web deploy secrets
