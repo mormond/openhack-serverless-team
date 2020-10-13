@@ -3,8 +3,10 @@ name: Build and deploy
 on:
   push:
     branches: [ main ]
+    paths-ignore: [ .github/** ]
   pull_request:
     branches: [ main ]
+    paths-ignore: [ .github/** ]    
 
 jobs:
   build:
@@ -25,7 +27,7 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         #pylint `ls -R|grep .py$|xargs`
-        pylint "find . -path ./.venv -prune -false -o -iname '*.py'"
+        pylint `find . -path ./.venv -prune -false -o -iname '*.py'|xargs`
 
   deploy:
     needs: [build]
