@@ -27,7 +27,7 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         #pylint `ls -R|grep .py$|xargs`
-        pylint "find . -path ./.venv -prune -false -o -iname '*.py'|xargs"
+        pylint `find . -path ./.venv -prune -false -o -iname '*.py'|xargs`
 
   deploy:
     needs: [build]
