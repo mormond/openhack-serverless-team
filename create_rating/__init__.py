@@ -11,7 +11,7 @@ import azure.functions as func
 
 def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse: #pylint: disable=E1136
     '''high level support for doing this and that.'''
-    logging.info('Create rating function processed a request.')
+    logging.info('create_rating function processed a request.')
 
     try:
         req_body = req.get_json()

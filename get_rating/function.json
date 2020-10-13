@@ -6,9 +6,20 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "rating/{productId}/{ratingId}",      
       "methods": [
         "get"
       ]
+    },
+    {
+      "type": "cosmosDB",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "connectionStringSetting": "AzureCosmosDBConnectionString",
+      "direction": "in",
+      "Id": "{ratingId}",
+      "PartitionKey": "{productId}"
     },
     {
       "type": "http",

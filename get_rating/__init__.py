@@ -6,25 +6,15 @@ import logging
 import azure.functions as func
 
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
+def main(req: func.HttpRequest, doc: func.DocumentList) -> func.HttpResponse:
     '''high level support for doing this and that.'''
-    logging.info('Python HTTP trigger function processed a request.')
+    logging.info('get_rating function processed a request.')
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+    if not doc:
+        logging.warning("Rating item not found")
+        return func.HttpResponse("Item not found.", status_code=404)
+    else:
+        logging.info("Found ToDo item")
 
-    if name:
-        return func.HttpResponse( \
-            f"Hello, {name}. This HTTP triggered function executed successfully.")
+    return func.HttpResponse(str(doc[0].data), status_code=200, mimetype='application/json')
 
-    return func.HttpResponse( \
-            "This HTTP triggered function executed successfully. \
-                Pass a name in the query string or in the request \
-                    body for a personalized response.",
-            status_code=200)
