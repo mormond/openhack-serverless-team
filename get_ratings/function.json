@@ -6,10 +6,20 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "user/{user_id}",
       "methods": [
         "get"
       ]
     },
+    {
+      "type": "cosmosDB",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "connectionStringSetting": "AzureCosmosDBConnectionString",
+      "direction": "in",
+      "sqlQuery": "SELECT * from c where c.userId = {user_id}"
+    },    
     {
       "type": "http",
       "direction": "out",
