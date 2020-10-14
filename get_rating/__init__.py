@@ -2,6 +2,7 @@
 high level support for doing this and that.
 """
 import logging
+import json
 
 import azure.functions as func
 
@@ -14,7 +15,9 @@ def main(req: func.HttpRequest, doc: func.DocumentList) -> func.HttpResponse:
         logging.warning("Rating item not found")
         return func.HttpResponse("Item not found.", status_code=404)
     else:
-        logging.info("Found ToDo item")
+        logging.info("Found Rating item")
 
-    return func.HttpResponse(str(doc[0].data), status_code=200, mimetype='application/json')
+    return func.HttpResponse(json.dumps(doc[0].data), 
+                                status_code=200, 
+                                mimetype='application/json')
 

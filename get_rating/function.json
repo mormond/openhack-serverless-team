@@ -6,7 +6,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "rating/{productId}/{ratingId}",      
+      "route": "rating/{product_id}/{rating_id}",      
       "methods": [
         "get"
       ]
@@ -18,8 +18,8 @@
       "collectionName": "data",
       "connectionStringSetting": "AzureCosmosDBConnectionString",
       "direction": "in",
-      "Id": "{ratingId}",
-      "PartitionKey": "{productId}"
+      "Id": "{rating_id}",
+      "PartitionKey": "{product_id}"
     },
     {
       "type": "http",

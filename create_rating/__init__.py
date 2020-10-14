@@ -3,8 +3,9 @@ high level support for doing this and that.
 """
 import logging
 import uuid
-import datetime
+from datetime import datetime
 import requests
+import json
 
 import azure.functions as func
 
@@ -22,7 +23,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
         rating = req_body.get('rating')
         user_notes = req_body.get('userNotes')
         req_body['id'] = str(uuid.uuid4())
-        req_body['timestamp'] = str(datetime.datetime.utcnow())
+        req_body['timestamp'] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%SZ")
 
     except ValueError:
         pass
@@ -47,6 +48,6 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     doc.set(func.Document.from_dict(req_body))
 
     return func.HttpResponse( \
-        str(req_body), \
+        json.dumps(req_body), \
             status_code=200, mimetype='application/json')
             
