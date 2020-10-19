@@ -31,3 +31,61 @@ GET http://localhost:7071/api/rating/4c25613a-a3c2-4ef3-8e02-9c335eb23204/c8cf74
 
 GET http://localhost:7071/api/user/cc20a6fb-a91f-4192-874d-132493685376 
 
+###
+
+https://serverlessohproduct.trafficmanager.net/api/GetProducts 
+
+###
+
+https://serverlessohproduct.trafficmanager.net/api/GetProduct?productId=4c25613a-a3c2-4ef3-8e02-9c335eb23204
+
+###
+https://serverlessohuser.trafficmanager.net/api/GetUser?userId=cc20a6fb-a91f-4192-874d-132493685376 
+
+###
+
+https://serverlessohproduct.trafficmanager.net/api/GetUser?userId=cc20a6fb-a91f-4192-874d-132493685376
+
+###
+
+POST https://serverlessohmanagementapi.trafficmanager.net/api/team/registerStorageAccount 
+Content-Type: application/json
+
+{
+  "storageAccountConnectionString": "",
+  "teamTableNumber": "london-table-18",
+  "blobContainerName": "orders"
+}
+
+###
+
+POST https://serverlessohmanagementapi.trafficmanager.net/api/order/combineOrderContent
+Content-Type: application/json
+
+{
+  "orderHeaderDetailsCSVUrl": "https://meotestorders.blob.core.windows.net/orders/20201015133000-OrderHeaderDetails.csv",
+  "orderLineItemsCSVUrl": "https://meotestorders.blob.core.windows.net/orders/20201015133000-OrderLineItems.csv",
+  "productInformationCSVUrl": "https://meotestorders.blob.core.windows.net/orders/20201015133000-ProductInformation.csv"
+}
+
+###
+
+POST https://serverlessohmanagementapi.trafficmanager.net/api/order/combineOrderContent
+Content-Type: application/json
+
+{
+  "orderHeaderDetailsCSVUrl": "https://challenge6.blob.core.windows.net/orders/20201019111000-OrderHeaderDetails.csv",
+  "orderLineItemsCSVUrl": "https://challenge6.blob.core.windows.net/orders/20201019111000-OrderLineItems.csv",
+  "productInformationCSVUrl": "https://challenge6.blob.core.windows.net/orders/20201019111000-ProductInformation.csv"
+}
+
+###
+
+POST https://serverlessohmanagementapi.trafficmanager.net/api/team/registerEventHub
+Content-Type: application/json
+
+{
+  "teamTableNumber": "london-table-18",
+  "eventHubConnectionString": "",
+  "eventHubName": "pos"
+}
