@@ -5,11 +5,19 @@
       "type": "eventHubTrigger",
       "name": "events",
       "direction": "in",
-      "eventHubName": "pos",
-      "connection": "meoserverless_RootManageSharedAccessKey_EVENTHUB",
+      "eventHubName": "pos",      
+      "connection": "POS_READ_EVENTHUB",
       "cardinality": "many",
-      "consumerGroup": "$Default",
-      "dataType": "binary"
+      "consumerGroup": "$Default"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "pos",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
     }
   ]
 }
