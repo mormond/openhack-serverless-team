@@ -17,17 +17,8 @@
       }
     }
   },
-  "extensions": {
-    "eventHubs": {
-      "batchCheckpointFrequency": 5,
-      "eventProcessorOptions": {
-        "maxBatchSize": 64,
-        "prefetchCount": 256
-      }
-    },
-    "extensionBundle": {
-      "id": "Microsoft.Azure.Functions.ExtensionBundle",
-      "version": "[1.*, 2.0.0)"
-    }
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[1.*, 2.0.0)"
   }
 }

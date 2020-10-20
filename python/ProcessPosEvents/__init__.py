@@ -7,10 +7,11 @@ import azure.functions as func
 from azure.servicebus import TopicClient
 from azure.servicebus import Message
 
-def main(events: List[func.EventHubEvent], doc: func.Out[func.Document], msg: func.Out[str]): #pylint: disable=E1136
+def main(events: List[func.EventHubEvent], doc: func.Out[func.Document]): #pylint: disable=E1136
+
 
     sb_connection_str = os.environ['AzureServiceBusConnectionString']
-    sb_client = TopicClient(address=sb_connection_str, name='receipts')
+    sb_client = TopicClient.from_connection_string(conn_str=sb_connection_str, name='receipts')
 
     for event in events:
 
@@ -35,5 +36,7 @@ def main(events: List[func.EventHubEvent], doc: func.Out[func.Document], msg: fu
                 "receiptUrl": order['header']['receiptUrl']
                 }
 
-            sb_client.send(Message(json.dumps(x)))
+            msg =  Message(json.dumps(x))
+            msg.user_properties = { 'totalCost': x['totalCost'] }
+            sb_client.send(msg)
       
