@@ -9,6 +9,13 @@
       "topicName": "receipts",
       "subscriptionName": "high-cost",
       "connection": "meoserverlessorders_SERVICEBUS"
-    }
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "$return",
+      "path": "receipts-high-value/{rand-guid}.json",
+      "connection": "AzureTestOrdersStorage"
+    }    
   ]
 }
