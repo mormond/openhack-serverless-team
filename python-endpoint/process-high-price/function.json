@@ -7,7 +7,7 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "topicName": "receipts",
-      "subscriptionName": "high-price",
+      "subscriptionName": "high-cost",
       "connection": "meoserverlessorders_SERVICEBUS"
     }
   ]

@@ -1,7 +1,7 @@
 import logging
-import json
 
 import azure.functions as func
+
 
 def main(message: func.ServiceBusMessage):
     # Log the Service Bus Message as plaintext
@@ -12,7 +12,3 @@ def main(message: func.ServiceBusMessage):
     logging.info("Python ServiceBus topic trigger processed message.")
     #logging.info("Message Content Type: " + message_content_type)
     logging.info("Message Body: " + message_body)
-
-    payload = json.loads(message_body)
-
-    x = payload

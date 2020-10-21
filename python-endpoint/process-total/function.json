@@ -7,15 +7,8 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "topicName": "receipts",
-      "subscriptionName": "low-cost",
+      "subscriptionName": "Total",
       "connection": "meoserverlessorders_SERVICEBUS"
-    },
-    {
-      "type": "blob",
-      "direction": "out",
-      "name": "$return",
-      "path": "receipts/{rand-guid}.json",
-      "connection": "AzureTestOrdersStorage"
     }
   ]
 }
