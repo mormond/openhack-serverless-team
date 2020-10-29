@@ -1,0 +1,22 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "AzureCosmosDBTriggerConnectionString",
+      "databaseName": "demodb",
+      "collectionName": "orders",
+      "createLeaseCollectionIfNotExists": "true"
+    },
+    {
+      "type": "eventHub",
+      "direction": "out",
+      "name": "outputEventHubMessage",
+      "connection": "meoserverless_RootManageSharedAccessKey_EVENTHUB",
+      "eventHubName": "challenge10-orders"
+    }
+  ]
+}
