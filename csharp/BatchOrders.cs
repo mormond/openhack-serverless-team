@@ -130,24 +130,29 @@ namespace Company.Function
                 //starter.Log(log, $@"New instance needed for prefix '{orderid}'. Starting...");
                 var retval = await starter.StartNewAsync(@"EnsureAllFiles", orderid, filename);
                 //starter.Log(log, $@"Started. {retval}");
+            
+                log.LogDebug($"No existing instance. Starting new instance for {orderid}");
+
             }
             else
             {
                 //starter.Log(log, $@"Instance already waiting. Current status: {instanceForPrefix.RuntimeStatus}. Firing 'newfile' event...");
 
-                if (instanceForPrefix.RuntimeStatus != OrchestrationRuntimeStatus.Running)
-                {
-                    if (instanceForPrefix.RuntimeStatus != OrchestrationRuntimeStatus.Terminated)
-                    {
-                        await starter.TerminateAsync(orderid, @"bounce");
-                    }
-                    var retval = await starter.StartNewAsync(@"EnsureAllFiles", orderid, filename);
-                    //starter.Log(log, $@"Restarted listener for {orderid}. {retval}");
-                }
-                else
-                {
+                // if (instanceForPrefix.RuntimeStatus != OrchestrationRuntimeStatus.Running)
+                // {
+                //     if (instanceForPrefix.RuntimeStatus != OrchestrationRuntimeStatus.Terminated)
+                //     {
+                //         await starter.TerminateAsync(orderid, @"bounce");
+                //     }
+                //     var retval = await starter.StartNewAsync(@"EnsureAllFiles", orderid, filename);
+                //     //starter.Log(log, $@"Restarted listener for {orderid}. {retval}");
+                // }
+                // else
+                // {
+                    log.LogDebug($"Found existing instance for {orderid}.");
+                    log.LogDebug($"Current state is {instanceForPrefix.RuntimeStatus.ToString()}");
                     await starter.RaiseEventAsync(orderid, @"newfile", filename);
-                }
+                // }
             }
 
 
